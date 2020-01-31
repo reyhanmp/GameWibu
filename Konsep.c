@@ -27,11 +27,10 @@ void aturan(){
 int main(){
     int resp;
     int valid = 1;
+    char nama[10];
+    int respgender;
 
     printf("Welcome to GAME OF WIBU!!!\n");
-    
-    
-
 
     while(valid == 1){
         printf("Do you want to view the rules? :\n");
@@ -52,8 +51,11 @@ int main(){
         }
     }
 
-
-
+    printf("Sesi Pembuatan Karakter!!!\n");
+    printf("Sape antum? : ");
+    scanf("%s", &nama);
+    printf("Jenis kelamin?\n1. Cowo\n2. Cewe\n3. Others");
+    scanf("%d", &respgender);
 
     return 0;
 }
