@@ -1,7 +1,7 @@
 //File konsep
 
 #include<stdio.h>
-#include<string.h>
+#include<string.h>  
 
 
 void aturan(){
@@ -23,6 +23,12 @@ void aturan(){
     scanf("%s",&foo);
 	return;
 }
+
+void batas(){
+    printf("=====================================\n");
+    return;
+}
+
 
 int main(){
     int resp;
@@ -54,8 +60,12 @@ int main(){
     printf("Sesi Pembuatan Karakter!!!\n");
     printf("Sape antum? : ");
     scanf("%s", &nama);
-    printf("Jenis kelamin?\n1. Cowo\n2. Cewe\n3. Others");
+    printf("Jenis kelamin?\n1. Cowo\n2. Cewe\n3. Others \n");
     scanf("%d", &respgender);
+
+    printf("Hello %s\n", &nama);
+    printf("Selamat memulai kehidupan ambismu\n");
+    batas();
 
     return 0;
 }
