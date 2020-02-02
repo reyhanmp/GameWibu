@@ -102,12 +102,13 @@ int main(){
 	int valid = 1;
 	char nama[10];
 	int respgender;
-	
+	int pilihan;
+
 	printf("Welcome to GAME OF WIBU!!!\n");
 	
 	while(valid == 1){
 		printf("Do you want to view the rules? :\n");
-		printf("1. Yes\n2. No\n \n");
+		printf("1. Yes\n2. No\n");
 		scanf("%d", &resp);
 		if (resp == 1)
 		{
@@ -130,9 +131,13 @@ int main(){
     printf("Jenis kelamin?\n1. Cowo\n2. Cewe\n3. Others \n");
     scanf("%d", &respgender);
 
-    printf("Hello %s\n", &nama);
+    printf("\nHello %s\n", &nama);
     printf("Selamat memulai kehidupan ambismu\n");
     batas();
+
+	aktivitas();
+	scanf("%d", &pilihan);
+	subaktivitas(pilihan);
 
 	return 0;
 }
