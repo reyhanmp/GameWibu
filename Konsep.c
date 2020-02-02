@@ -65,6 +65,13 @@ void subaktivitas(int pilihan){
 	return;
 }
 
+void pause(){
+	char foo;
+	printf("\nTEKAN ENTER UNTUK LANJUT\n");
+	scanf("%c",&foo);
+	scanf("%c",&foo);
+	return;
+}
 
 int main(){
 	//database status
@@ -131,14 +138,65 @@ int main(){
     printf("Jenis kelamin?\n1. Cowo\n2. Cewe\n3. Others \n");
     scanf("%d", &respgender);
 
-    printf("\nHello %s\n", &nama);
-    printf("Selamat memulai kehidupan ambismu\n");
-    batas();
+   	char nick[5];
+	if(respgender==1){
+		strcpy(nick,"mas");
+	}
+	else if(respgender==2){
+		strcpy(nick, "mbak");
+	}
+	else{
+		strcpy(nick, "ceu");
+	}
 
-	aktivitas();
-	scanf("%d", &pilihan);
-	subaktivitas(pilihan);
+	printf("Hello %s %s!\n", nick, nama);
+	printf("Selamat memulai kehidupan ambismu!\n");
+	pause();
+	batas();
 
+		//gameplay
+	
+	int lanjut = 1;
+	while(lanjut == 1){
+		
+		//pilihan
+		int pilihan;
+		valid = 1;
+		while(valid == 1){
+			printf("pilih aktivitasmu!\n");
+			aktivitas();
+			scanf("%d",&pilihan);
+			
+			if (pilihan <7 && pilihan  > 0){
+				valid = 0;
+			}
+			else{
+				printf("\nPILIHAN TIDAK VALID!\n");
+			}	
+			}
+		
+		//sub-pilihan
+		int subpilihan;
+		valid = 1;
+		while(valid==1){
+			subaktivitas(pilihan);
+			printf("\nMAU NGAPAIN? (pilih 1-4): ");
+			scanf("%d",subpilihan);
+			
+			if(subpilihan<5 && subpilihan>0){
+				valid = 0;
+			}
+			else{
+				printf("\nPILIHAN TIDAK VALID!\n");
+			}
+		}
+		
+		printf("kamu milih:  %d",makan[subpilihan]);
+		
+		//PENGUBAHAN STATUS
+		printf("%d",makan[subpilihan]);
+		lanjut=0;
+	}
+		
 	return 0;
 }
-
