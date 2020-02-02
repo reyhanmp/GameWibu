@@ -75,7 +75,8 @@ void pause(){
 
 int main(){
 	//database status
-	//indexing:  0happiness, 1social, 2hygiene, 3food, 4health, 5 money, 6 grades 
+	//indexing:  0happiness, 1social, 2hygiene, 3food, 4health, 5 money, 6 grades
+	int status[7] = {25,100,100,100,100,50,100};
 	int makan[4][7] = {{0,0,-1,3,-1,-1,0},
 			   {3,0,0,2,0,-5,0},
 			   {1,0,0,2,-1,-1,-1},
@@ -157,7 +158,26 @@ int main(){
 		//gameplay
 	
 	int lanjut = 1;
+	int win = 0;
 	while(lanjut == 1){
+		//Penunjuk status
+		printf("Status %s %s saat ini : ", nick, nama);
+		printf("Happiness = %d\n" , status[0]);
+		printf("Social = %d\n" , status[1]);
+		printf("Hygiene = %d\n", status[2]);
+		printf("Food = %d\n", status[3]);
+		printf("Health = %d\n", status[4]);
+		printf("Money = %d\n", status[5]);
+		printf("Grades = %d\n", status[6]);
+		//status checker, buat ngecek dia udh mati atau belum
+		if (status[4] <= 0){
+			lanjut = 0;
+			break;
+		}
+
+		if (status[5] >= 100 || status[0] >= 100){
+			win = 1;
+		}
 		
 		//pilihan
 		int pilihan;
@@ -189,14 +209,21 @@ int main(){
 			else{
 				printf("\nPILIHAN TIDAK VALID!\n");
 			}
+			
+		}
+
+		printf("Perubahan status : \n");
+		if (pilihan == 1){
+			for (int i = 0 ; i < 7 ; i++){
+				status[i] = status[i] - makan[pilihan][i];
+			}
+		}
+		else if (pilihan == 2){
+			for (int i = 0 ; i < 7 ; i++){
+				status[i] = status[i] - makan[pilihan][i];
+			}
 		}
 		
-		printf("kamu milih:  %d",makan[subpilihan]);
-		
-		//PENGUBAHAN STATUS
-		printf("%d",makan[subpilihan]);
-		lanjut=0;
-	}
 		
 	return 0;
 }
