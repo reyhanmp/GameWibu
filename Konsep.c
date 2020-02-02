@@ -3,6 +3,10 @@
 #include<stdio.h>
 #include<string.h>  
 
+struct karakter{
+    char name[30];
+};
+
 
 void aturan(){
     char foo;
@@ -36,6 +40,8 @@ int main(){
     char nama[10];
     int respgender;
 
+    struct karakter player;
+
     printf("Welcome to GAME OF WIBU!!!\n");
 
     while(valid == 1){
@@ -59,11 +65,11 @@ int main(){
 
     printf("Sesi Pembuatan Karakter!!!\n");
     printf("Sape antum? : ");
-    scanf("%s", &nama);
+    scanf("%s", &player.name);
     printf("Jenis kelamin?\n1. Cowo\n2. Cewe\n3. Others \n");
     scanf("%d", &respgender);
 
-    printf("Hello %s\n", &nama);
+    printf("Hello %s\n", &player.name);
     printf("Selamat memulai kehidupan ambismu\n");
     batas();
 
