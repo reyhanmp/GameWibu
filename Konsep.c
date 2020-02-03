@@ -11,7 +11,7 @@ void aturan(){
 	printf("1. Kamu adalah seorang jomblo ambis yang berorientasi untuk mengumpulkan uang sebanyak-banyaknya\n");
 	printf("2. Kamu harus menjaga agar dirimu tetap hidup dengan cara memenuhi segala macam kebutuhanmu\n");
 	printf("3. Kamu memiliki sebuah status yang berisi: happiness, social, hygiene, food, health, dan money\n");
-	printf("4. Setiap aktifitas yang kamu lakukan akan mempengaruhi statusmu\n");
+	printf("4. Setiap aktivitas yang kamu lakukan akan mempengaruhi statusmu\n");
 	printf("5. Karaktermu akan 'mati' ketika status health = 0\n");
 	printf("6. Kamu akan menang jika sebelum 'mati' kamu memenuhi minimal satu dari kriteria ini: \n");
 	printf("  - Memperoleh uang lebih dari 100 Dollar \n");
@@ -129,29 +129,29 @@ int main(){
 		}
 		else
 		{
-		    printf("Input tidak valid!!!\n");
+		    printf("Invalid input!!!\n");
 		}
     }
 
-    printf("Sesi Pembuatan Karakter!!!\n");
-    printf("Sape antum? : ");
+    printf("Create your character!!!\n");
+    printf("Who's your name? : ");
     scanf("%s", &nama);
-    printf("Jenis kelamin?\n1. Cowo\n2. Cewe\n3. Others \n");
+    printf("What kind are you?\n1. Boy\n2. Girl\n3. Others \n");
     scanf("%d", &respgender);
 
    	char nick[5];
 	if(respgender==1){
-		strcpy(nick,"mas");
+		strcpy(nick,"Bro");
 	}
 	else if(respgender==2){
-		strcpy(nick, "mbak");
+		strcpy(nick, "Sis");
 	}
 	else{
-		strcpy(nick, "ceu");
+		strcpy(nick, "");
 	}
 
 	printf("Hello %s %s!\n", nick, nama);
-	printf("Selamat memulai kehidupan ambismu!\n");
+	printf("Enjoy your ordinary life!\n");
 	pause();
 	batas();
 
@@ -183,7 +183,7 @@ int main(){
 		int pilihan;
 		valid = 1;
 		while(valid == 1){
-			printf("pilih aktivitasmu!\n");
+			printf("Choose your activity!\n");
 			aktivitas();
 			scanf("%d",&pilihan);
 			
@@ -191,39 +191,59 @@ int main(){
 				valid = 0;
 			}
 			else{
-				printf("\nPILIHAN TIDAK VALID!\n");
+				printf("\nINVALID!\n");
 			}	
 			}
 		
 		//sub-pilihan
+		printf("\nWhat are you gonna do? (pilih 1-4): ");
 		int subpilihan;
 		valid = 1;
 		while(valid==1){
 			subaktivitas(pilihan);
-			printf("\nMAU NGAPAIN? (pilih 1-4): ");
 			scanf("%d",subpilihan);
 			
 			if(subpilihan<5 && subpilihan>0){
 				valid = 0;
 			}
 			else{
-				printf("\nPILIHAN TIDAK VALID!\n");
+				printf("\nINVALID!\n");
 			}
 			
 		}
 
+		//perubahan status
 		printf("Perubahan status : \n");
 		if (pilihan == 1){
 			for (int i = 0 ; i < 7 ; i++){
-				status[i] = status[i] - makan[pilihan][i];
+				status[i] = status[i] + makan[pilihan][i];
 			}
 		}
 		else if (pilihan == 2){
 			for (int i = 0 ; i < 7 ; i++){
-				status[i] = status[i] - makan[pilihan][i];
+				status[i] = status[i] + nongkrong[pilihan][i];
 			}
 		}
-		
-		
+		else if (pilihan == 3){
+			for (int i = 0 ; i < 7 ; i++){
+				status[i] = status[i] + akademik[pilihan][i];
+			}
+		}
+		else if (pilihan == 4){
+			for (int i = 0 ; i < 7 ; i++){
+				status[i] = status[i] + hiburan[pilihan][i];
+			}
+		}
+		else if (pilihan == 5){
+			for (int i = 0 ; i < 7 ; i++){
+				status[i] = status[i] + ekonomi[pilihan][i];
+			}
+		}
+	}
+	
+	// Pilih keluar atau tidak
+	int exit = 0;
+	printf("Continue? -- type 0 to quit");
+	scanf("%d", &lanjut);
 	return 0;
 }
