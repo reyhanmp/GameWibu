@@ -241,15 +241,28 @@ int main(){
 				status[i] = status[i] + ekonomi[subpilihan-1][i];
 			}
 		}
-	}
-	
+		
 	//untuk mencegah ada yang nilainya lebih dari limit maksimal
 	int j;
+	int maks;
 	for(j = 0 ; j < 7 ; j++){
-		int maks = 100;
+		int maks = 50;
 		if(status[j] >= maks){
 			status[j] = maks;
 		}
+		
+	//syarat menang
+	int maks;
+	if(status[5] == maks ){
+		win = 1;
+	}
+		
+	}
+	}
+	
+	
+	if(win == 1){
+	printf("SELAMAT, KAMU BERHASIL MENCAPAI MIMPIMU!");
 	}
 	
 	// Pilih keluar atau tidak
