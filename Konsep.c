@@ -6,7 +6,7 @@
 
 void aturan(){
     int foo;
-    printf("SELAMAT DATANG DI THE KERAMBIRS MUDA!\n\n");
+    printf("\nSELAMAT DATANG DI THE KERAMBIRS MUDA!\n\n");
 	printf("==CARA MAIN==\n");
 	printf("1. Kamu adalah seorang jomblo ambis yang berorientasi untuk mengumpulkan uang sebanyak-banyaknya\n");
 	printf("2. Kamu harus menjaga agar dirimu tetap hidup dengan cara memenuhi segala macam kebutuhanmu\n");
@@ -52,7 +52,7 @@ void subaktivitas(int pilihan){
 	}
 	if( pilihan==4){
 		//4.hiburan
-		printf("==HIBURAN==\n1.BERMAIN GAME ONLINE\n2.BERMAIN KE KOSAN TEMAN\n3.BERMAIN KE KARNAVAL BERSAMA PACAR\n3.MENONTON ANIME BARU\n4.MENDENGAR MUSIK BILLIE EYELID\n");
+		printf("==HIBURAN==\n1.BERMAIN GAME ONLINE\n2.BERMAIN KE KOSAN TEMAN\n3.MENONTON ANIME BARU\n4.MENDENGAR MUSIK BILLIE EYELID\n");
 	}
 	if( pilihan==5){
 		//5.kegiatan ekonomi
@@ -76,7 +76,7 @@ void pause(){
 int main(){
 	//database status
 	//indexing:  0happiness, 1social, 2hygiene, 3food, 4health, 5 money, 6 grades
-	int status[7] = {25,100,100,100,100,50,100};
+	int status[7] = {25,25,25,25,25,25,50};
 	int makan[4][7] = {{0,0,-1,3,-1,-1,0},
 			   {3,0,0,2,0,-5,0},
 			   {1,0,0,2,-1,-1,-1},
@@ -102,7 +102,6 @@ int main(){
 			   {0,0,5,-1,0,0,-1},
 			   {0,0,-1,0,0,0,1}}
 	;
-	
 	//end database status
 		
 	
@@ -133,7 +132,7 @@ int main(){
 		}
     }
 
-    printf("Create your character!!!\n");
+    printf("\nCreate your character!!!\n");
     printf("Who's your name? : ");
     scanf("%s", &nama);
     printf("What kind are you?\n1. Boy\n2. Girl\n3. Others \n");
@@ -169,6 +168,8 @@ int main(){
 		printf("Health = %d\n", status[4]);
 		printf("Money = %d\n", status[5]);
 		printf("Grades = %d\n", status[6]);
+		
+		Sleep(1000);
 		//status checker, buat ngecek dia udh mati atau belum
 		if (status[4] <= 0){
 			lanjut = 0;
@@ -183,7 +184,7 @@ int main(){
 		int pilihan;
 		valid = 1;
 		while(valid == 1){
-			printf("Choose your activity!\n");
+			printf("\nChoose your activity!\n");
 			aktivitas();
 			scanf("%d",&pilihan);
 			
@@ -196,12 +197,12 @@ int main(){
 			}
 		
 		//sub-pilihan
-		printf("\nWhat are you gonna do? (pilih 1-4): ");
+		printf("\nWhat are you gonna do? (pilih 1-4): \n");
 		int subpilihan;
 		valid = 1;
 		while(valid==1){
 			subaktivitas(pilihan);
-			scanf("%d",subpilihan);
+			scanf("%d",&subpilihan);
 			
 			if(subpilihan<5 && subpilihan>0){
 				valid = 0;
@@ -211,33 +212,43 @@ int main(){
 			}
 			
 		}
-
+		printf("%d %d",pilihan,subpilihan);
 		//perubahan status
 		printf("Perubahan status : \n");
+		int i;
 		if (pilihan == 1){
-			for (int i = 0 ; i < 7 ; i++){
-				status[i] = status[i] + makan[pilihan][i];
+			for (i = 0 ; i < 7 ; i++){
+				status[i] = status[i] + makan[subpilihan-1][i];
 			}
 		}
 		else if (pilihan == 2){
-			for (int i = 0 ; i < 7 ; i++){
-				status[i] = status[i] + nongkrong[pilihan][i];
+			for (i = 0 ; i < 7 ; i++){
+				status[i] = status[i] + nongkrong[subpilihan-1][i];
 			}
 		}
 		else if (pilihan == 3){
-			for (int i = 0 ; i < 7 ; i++){
-				status[i] = status[i] + akademik[pilihan][i];
+			for (i = 0 ; i < 7 ; i++){
+				status[i] = status[i] + akademik[subpilihan-1][i];
 			}
 		}
 		else if (pilihan == 4){
-			for (int i = 0 ; i < 7 ; i++){
-				status[i] = status[i] + hiburan[pilihan][i];
+			for (i = 0 ; i < 7 ; i++){
+				status[i] = status[i] + hiburan[subpilihan-1][i];
 			}
 		}
 		else if (pilihan == 5){
-			for (int i = 0 ; i < 7 ; i++){
-				status[i] = status[i] + ekonomi[pilihan][i];
+			for (i = 0 ; i < 7 ; i++){
+				status[i] = status[i] + ekonomi[subpilihan-1][i];
 			}
+		}
+	}
+	
+	//untuk mencegah ada yang nilainya lebih dari limit maksimal
+	int j;
+	for(j = 0 ; j < 7 ; j++){
+		int maks = 100;
+		if(status[j] >= maks){
+			status[j] = maks;
 		}
 	}
 	
