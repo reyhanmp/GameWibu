@@ -246,7 +246,7 @@ int main(){
 	int j;
 	int maks;
 	for(j = 0 ; j < 7 ; j++){
-		int maks = 50;
+		maks = 50;
 		if(status[j] >= maks){
 			status[j] = maks;
 		}
